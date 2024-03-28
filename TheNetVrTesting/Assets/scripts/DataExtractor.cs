@@ -28,15 +28,16 @@ public class DataExtractor : MonoBehaviour
     [ContextMenu("Save")]
     public void Save()
     {
-        CloudSave.SaveData(avatar, "Avatar Data");
+        CloudSave.SaveData(avatar, "AvatarData");
         UnityEngine.Debug.Log("Avatar Data Saved");
     }
     [ContextMenu("Load")]
     public async void Load()
     {
 
-        var data = await CloudSave.LoadData<AvatarData>("Avatar Data");
+        var data = await CloudSave.LoadData<AvatarData>("AvatarData");
         UnityEngine.Debug.Log(data);
+        fileContents = data.data.str;
     }
 
 }
