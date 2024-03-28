@@ -1,31 +1,3 @@
-using UnityEngine;
-
-public class TextFileReader : MonoBehaviour
-{
-    // Reference to the text file in the Unity Editor
-    public TextAsset textFile;
-
-    void Start()
-    {
-        if (textFile != null)
-        {
-            // Extract text from the text file
-            string fileContents = textFile.text;
-            Debug.Log("Text File Contents: " + fileContents);
-
-
-        }
-        else
-        {
-            Debug.LogError("Text file is not assigned.");
-        }
-    }
-}
-
-
-//cloud load and save script (simple)
-/*
- 
 //using System.Diagnostics;
 using System;
 using UnityEngine;
@@ -36,22 +8,17 @@ using System.Collections.Generic;
 using Unity.Services.CloudSave;
 using Unity.Services.CloudSave.Models;
 
-//using System.Diagnostics.Eventing.Reader;
-//using System.Diagnostics;
-//using System.Diagnostics;
-//using System.Diagnostics.Eventing.Reader;
-public class CloudSaving : MonoBehaviour
+public class CloudSave : MonoBehaviour
 {
 
-   // public static int bruhnumber = 5;
 
     async void Awake()
     {
         try
         {
-         
+
             await UnityServices.InitializeAsync();
-           
+
             await SignInAnonymouslyAsync();
         }
         catch (Exception e)
@@ -97,7 +64,7 @@ public class CloudSaving : MonoBehaviour
 
     public async static Task<T> LoadData<T>(string key)
     {
-        Dictionary<string,string> playerData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { key });
+        Dictionary<string, string> playerData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { key });
 
 
         var dataString = playerData[key];
@@ -106,13 +73,11 @@ public class CloudSaving : MonoBehaviour
         var data = JsonUtility.FromJson<T>(dataString);
         Debug.Log("Done: " + playerData[key]);
 
-    //   if (playerData.TryGetValue("keyName", out var keyName))
-    //    {
-     //       Debug.Log($"keyName: {keyName.Value.GetAs<string>()}");
-    //    }
 
-return data;
+
+        return data;
     }
-*/
+}
 
-  
+
+
